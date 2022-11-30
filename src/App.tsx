@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import * as httpClient from "./http/client";
+import DrinkPage from "./models/DrinkPage";
+import { mapCategories, mapDrinkList } from "./utils/mapper";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const [data, setData] = React.useState<DrinkPage>({ categoryList: [], drinkList: [] });
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const getCategoriesResult = await httpClient.getCategories();
+      const categoryList = mapCategories(getCategoriesResult.data);
+
+      if (getCategoriesResult.status >= 200 && getCategoriesResult.status < 300) {
+        const getDrinksResult = await httpClient.filterByCategory(categoryList[0]);
+        const drinkList = mapDrinkList(getDrinksResult.data);
+
+        if (getDrinksResult.status >= 200 && getDrinksResult.status < 300) {
+          setData({ categoryList: categoryList, drinkList: drinkList })
+
+          console.log({ categoryList: categoryList, drinkList: drinkList });
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return <div></div>;
+};
 
 export default App;
