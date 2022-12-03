@@ -8,7 +8,11 @@ interface HeaderProps {
 }
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const [currentCategory, setCurrentCategory] = React.useState<Category | undefined>(props.categoryList[0]);
+  const [currentCategory, setCurrentCategory] = React.useState<Category | undefined>(undefined);
+
+  React.useEffect(() => {
+    setCurrentCategory(props.categoryList[0]);
+  }, [props.categoryList]);
 
   const handleClick = (category: Category) => () => {
     setCurrentCategory(category);
@@ -25,7 +29,8 @@ const Header = (props: HeaderProps): JSX.Element => {
       <div className="header--menu">
         {props.categoryList.map((category) => {
           return (
-            <button 
+            <button
+              key={category}
               className={`header--menu-button ${currentCategory === category ? 'header--menu-button--active' : ''}`}
               onClick={handleClick(category)}
             >
