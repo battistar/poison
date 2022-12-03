@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "./components/Card";
 import Header from "./components/Header";
 import * as httpClient from "./http/client";
 import DrinkPage from "./models/DrinkPage";
@@ -30,6 +31,14 @@ const App = () => {
   return (
     <>
       <Header categoryList={data.categoryList} />
+      <main>
+        { 
+          data.drinkList.length > 0 && 
+          data.drinkList.map((drink) => {
+            return <Card drink={drink} /> 
+          })
+        }
+      </main>
     </>
   );
 };
