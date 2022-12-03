@@ -53,6 +53,11 @@ header {
   background-color: white;
 }
 
+.header--menu-button--active {
+  color: #202020;
+  background-color: white;
+} 
+
 main {
   display: flex;
   justify-content: flex-start;
