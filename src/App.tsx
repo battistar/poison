@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./components/Header";
 import * as httpClient from "./http/client";
 import DrinkPage from "./models/DrinkPage";
 import { mapCategories, mapDrinkList } from "./utils/mapper";
@@ -26,7 +27,11 @@ const App = () => {
     fetchData();
   }, []);
 
-  return <div></div>;
+  return (
+    <>
+      <Header categoryList={data.categoryList} />
+    </>
+  );
 };
 
 export default App;
