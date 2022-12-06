@@ -7,19 +7,27 @@ import DrinkPage from "./models/DrinkPage";
 import { mapCategories, mapDrinkList } from "./utils/mapper";
 
 const App = () => {
-  const [data, setData] = React.useState<DrinkPage>({ categoryList: [], drinkList: [] });
+  const [data, setData] = React.useState<DrinkPage>({
+    categoryList: [],
+    drinkList: [],
+  });
 
   React.useEffect(() => {
     const fetchData = async () => {
       const getCategoriesResult = await httpClient.getCategories();
-      
-      if (getCategoriesResult.status >= 200 && getCategoriesResult.status < 300) {
+
+      if (
+        getCategoriesResult.status >= 200 &&
+        getCategoriesResult.status < 300
+      ) {
         const categoryList = mapCategories(getCategoriesResult.data);
-        const getDrinksResult = await httpClient.filterByCategory(categoryList[0]);
-        
+        const getDrinksResult = await httpClient.filterByCategory(
+          categoryList[0]
+        );
+
         if (getDrinksResult.status >= 200 && getDrinksResult.status < 300) {
           const drinkList = mapDrinkList(getDrinksResult.data);
-          setData({ categoryList: categoryList, drinkList: drinkList })
+          setData({ categoryList: categoryList, drinkList: drinkList });
         }
       }
     };
@@ -34,27 +42,33 @@ const App = () => {
       const drinkList = mapDrinkList(result.data);
 
       setData((prevData) => {
-        return ({
+        return {
           ...prevData,
-          drinkList: drinkList
-        });
-      })
+          drinkList: drinkList,
+        };
+      });
     }
   };
 
   return (
     <>
-      <Header 
-        categoryList={data.categoryList} 
-        onCategoryClick={handleCategoryClick} 
+      <Header
+        categoryList={data.categoryList}
+        onCategoryClick={handleCategoryClick}
       />
       <main>
-        { 
-          data.drinkList.length > 0 && 
-          data.drinkList.map((drink) => {
-            return <Card drink={drink} /> 
-          })
-        }
+        <div className="container">
+          <div className="row">
+            {data.drinkList.length > 0 &&
+              data.drinkList.map((drink) => {
+                return (
+                  <div key={drink.id} className="col-l-3 col-m-4 col-s-6">
+                    <Card drink={drink} />
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </main>
     </>
   );
