@@ -16,31 +16,29 @@ export const mapCategories = (response: CategoryListAPI): Category[] => {
 const buildIngredients = (response: DrinkDetailsAPI): Ingredient[] => {
   const ingredients: Ingredient[] = [];
 
-  const i = 1;
+  let i = 1;
   while (true) {
-    const name = response[`strIngredient${i}`];
-    const measure = response[`strMeasure${i}`];
+    const name = response[`strIngredient${i}` as keyof DrinkDetailsAPI] as string;
+    const measure = response[`strMeasure${i}` as keyof DrinkDetailsAPI] as string;
 
-    if (name === undefined) {
+    if (name === null) {
       break;
     }
 
     const ingredient: Ingredient = {
-      name: name,
-      measure: measure,
+      name: name.trim(),
+      measure: measure.trim(),
     };
 
     ingredients.push(ingredient);
+
+    i++;
   }
 
   return ingredients;
 };
 
 export const mapDrinkDetailsList = (response: DrinkDetailsListAPI): DrinkDetails[] => {
-  if (response.drinks === null) {
-    return [];
-  }
-  
   const drinks: DrinkDetails[] = response.drinks.map((drinkAPI) => {
     const drink: DrinkDetails = {
       id: drinkAPI.idDrink,
@@ -58,10 +56,6 @@ export const mapDrinkDetailsList = (response: DrinkDetailsListAPI): DrinkDetails
 };
 
 export const mapDrinkList = (response: DrinkListAPI): Drink[] => {
-  if (response.drinks === null) {
-    return [];
-  }
-
   const drinks: Drink[] = response.drinks.map((drinkAPI) => {
     const drink: Drink = {
       id: drinkAPI.idDrink,
