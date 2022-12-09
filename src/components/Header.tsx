@@ -2,6 +2,8 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { ReactComponent as HeaderIcon } from "../assets/icons/HeaderIcon.svg";
 import Category from "../models/Category";
+import Dropdown from "./Dropdown";
+import DropdownItem from "./DropdownItem";
 
 interface HeaderProps {
   categoryList: Category[];
@@ -10,14 +12,22 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps): JSX.Element => {
   const [currentCategory, setCurrentCategory] = React.useState<Category | undefined>(undefined);
+  const [showDropdown, setShowDropdown] = React.useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
   React.useEffect(() => {
     setCurrentCategory(props.categoryList[0]);
   }, [props.categoryList]);
 
-  const handleClick = (category: Category) => () => {
+  const handleClickDropdown = () => {
+    setShowDropdown((prevShowDropdown: boolean): boolean => {
+      return !prevShowDropdown;
+    });
+  };
+
+  const handleClickCategory = (category: Category) => () => {
     setCurrentCategory(category);
+    setShowDropdown(false);
 
     props.onCategoryClick(category);
   };
@@ -31,26 +41,30 @@ const Header = (props: HeaderProps): JSX.Element => {
       <div className="header--menu">
         {
           isMobile ?
-          <select className="header--menu-dropdown" value={currentCategory}>
-            {props.categoryList.map((category) => {
-              return (
-                <option
-                  key={category}
-                  value={category}
-                  onClick={handleClick(category)}
-                >
-                  {category.toUpperCase()}
-                </option>
-              );
-            })}
-          </select>
+          <Dropdown 
+            title={currentCategory !== undefined ? currentCategory.toUpperCase() : ""}
+            show={showDropdown}
+            onClick={handleClickDropdown}
+          >
+            {
+              props.categoryList.map((category) => {
+                return (
+                  <DropdownItem
+                    key={category}
+                    title={category.toUpperCase()}
+                    onClick={handleClickCategory(category)}
+                  />
+                );
+              })
+            }
+          </Dropdown>
           :
           props.categoryList.map((category) => {
             return (
               <button
                 key={category}
                 className={`header--menu-button ${currentCategory === category ? 'header--menu-button--active' : ''}`}
-                onClick={handleClick(category)}
+                onClick={handleClickCategory(category)}
               >
                 {category.toUpperCase()}
               </button>
