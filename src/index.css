@@ -31,14 +31,14 @@ header {
   margin: 0;
 }
 
-.header--menu {
+.header--nav {
   display: flex;
   justify-content: center;
   border-top: 1px solid #202020;
   background-color: #571199;
 }
 
-.header--menu-button {
+.header--nav-button {
   color: white;
   background-color: transparent;
   border: none;
@@ -48,7 +48,7 @@ header {
   cursor: pointer;
 }
 
-.header--menu-dropdown {
+.header--nav-dropdown {
   color: white;
   width: 100%;
   background-color: transparent;
@@ -57,12 +57,28 @@ header {
   padding: 8px 8px;
 }
 
-.header--menu-button:hover {
+.header--nav-button:hover {
   color: #202020;
   background-color: white;
 }
 
-.header--menu-button--active {
+.header--nav-button--active {
+  color: #202020;
+  background-color: white;
+}
+
+button.primary {
+  color: white;
+  background-color: #7e28cf;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 8px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+button.primary:hover {
   color: #202020;
   background-color: white;
 }
@@ -104,7 +120,7 @@ header {
   flex-direction: column;
   gap: 16px;
   color: white;
-  margin: 16px;
+  margin: 16px 8px 0px 8px;
   padding: 16px;
   border: 1px solid black;
   border-radius: 16px;
@@ -123,7 +139,10 @@ header {
 }
 
 .details--text-container {
- width: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .details--title-container {
@@ -143,19 +162,27 @@ header {
   padding: 4px 8px;
   border-radius: 16px;
   font-size: 12px;
+  text-align: center;
 }
 
 .details--section {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 16px 0px;
+  margin: 0px;
 }
 
 .details--section-title {
   margin: 0;
   font-size: 16px;
   font-weight: 500;
+}
+
+.details--button-container {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .details--instructions {
@@ -233,6 +260,31 @@ header {
   background-color: white;
 }
 
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  color: white;
+}
+
+.error--title {
+  margin: 0;
+  font-size: 64px;
+}
+
+.error--emoticons {
+  margin: 0;
+  font-size: 64px;
+}
+
+.error--description {
+  margin: 0;
+}
+
 .container {
   padding: 0px 8px 16px 8px;
 }
@@ -277,7 +329,7 @@ header {
   .row > .col-m-11 {width: 91.66%;}
   .row > .col-m-12 {width: 100%;}
 
-  .header--menu-button {
+  .header--nav-button {
     font-size: 12px;
   }
 
@@ -312,7 +364,7 @@ header {
   .row > .col-l-11 {width: 91.66%;}
   .row > .col-l-12 {width: 100%;}
 
-  .header--menu-button {
+  .header--nav-button {
     font-size: 14px;
   }
 }

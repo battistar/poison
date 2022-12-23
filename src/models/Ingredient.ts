@@ -1,6 +1,6 @@
 interface Ingredient {
   name: string;
-  measure: string;
+  measure?: string;
 }
 
 export default Ingredient;

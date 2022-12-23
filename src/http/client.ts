@@ -26,3 +26,11 @@ export const filterByCategory = async (query: string): Promise<AxiosResponse<Dri
 export const getRandom = async (): Promise<AxiosResponse<DrinkDetailsListAPI>> => {
   return await client.get<DrinkDetailsListAPI>("random.php");
 };
+
+export const getDrinkByID = async (id: number): Promise<AxiosResponse<DrinkDetailsListAPI>> => {
+  const params = {
+    i: id
+  }
+
+  return await client.get<DrinkDetailsListAPI>("lookup.php", { params: params });
+}

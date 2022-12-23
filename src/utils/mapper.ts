@@ -19,7 +19,7 @@ const buildIngredients = (response: DrinkDetailsAPI): Ingredient[] => {
   let i = 1;
   while (true) {
     const name = response[`strIngredient${i}` as keyof DrinkDetailsAPI] as string;
-    const measure = response[`strMeasure${i}` as keyof DrinkDetailsAPI] as string;
+    const measure = response[`strMeasure${i}` as keyof DrinkDetailsAPI] as string | null;
 
     if (name === null) {
       break;
@@ -27,7 +27,7 @@ const buildIngredients = (response: DrinkDetailsAPI): Ingredient[] => {
 
     const ingredient: Ingredient = {
       name: name.trim(),
-      measure: measure.trim(),
+      measure: measure?.trim(),
     };
 
     ingredients.push(ingredient);

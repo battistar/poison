@@ -4,20 +4,18 @@ import { ReactComponent as HeaderIcon } from "../assets/icons/HeaderIcon.svg";
 import Category from "../models/Category";
 import Dropdown from "./Dropdown";
 import DropdownItem from "./DropdownItem";
+import { useNavigate } from "react-router-dom";
+import { toURLParams } from "../utils/urlParamsBeautify";
 
 interface HeaderProps {
-  categoryList: Category[];
-  onCategoryClick: (category: Category) => void;
+  categoryList?: Category[];
 }
 
 const Header = (props: HeaderProps): JSX.Element => {
-  const [currentCategory, setCurrentCategory] = React.useState<Category | undefined>(undefined);
+  const [currentCategory, setCurrentCategory] = React.useState<Category | undefined>(props.categoryList?.[0]);
   const [showDropdown, setShowDropdown] = React.useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
-
-  React.useEffect(() => {
-    setCurrentCategory(props.categoryList[0]);
-  }, [props.categoryList]);
+  const navigate = useNavigate();
 
   const handleClickDropdown = () => {
     setShowDropdown((prevShowDropdown: boolean): boolean => {
@@ -29,7 +27,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     setCurrentCategory(category);
     setShowDropdown(false);
 
-    props.onCategoryClick(category);
+    navigate(`category/${toURLParams(category)}`);
   };
 
   return (
@@ -38,40 +36,42 @@ const Header = (props: HeaderProps): JSX.Element => {
         <HeaderIcon className="header--icon" />
         <h2 className="header--title">Poison</h2>
       </div>
-      <div className="header--menu">
-        {
-          isMobile ?
-          <Dropdown 
-            title={currentCategory !== undefined ? currentCategory.toUpperCase() : ""}
-            show={showDropdown}
-            onClick={handleClickDropdown}
-          >
-            {
-              props.categoryList.map((category) => {
-                return (
-                  <DropdownItem
-                    key={category}
-                    title={category.toUpperCase()}
-                    onClick={handleClickCategory(category)}
-                  />
-                );
-              })
-            }
-          </Dropdown>
-          :
-          props.categoryList.map((category) => {
-            return (
-              <button
-                key={category}
-                className={`header--menu-button ${currentCategory === category ? 'header--menu-button--active' : ''}`}
-                onClick={handleClickCategory(category)}
-              >
-                {category.toUpperCase()}
-              </button>
-            );
-          })
-        }
-      </div>
+      { props.categoryList &&
+        <nav className="header--nav">
+          {
+            isMobile ?
+            <Dropdown 
+              title={currentCategory !== undefined ? currentCategory.toUpperCase() : ""}
+              show={showDropdown}
+              onClick={handleClickDropdown}
+            >
+              {
+                props.categoryList.map((category) => {
+                  return (
+                    <DropdownItem
+                      key={category}
+                      title={category.toUpperCase()}
+                      onClick={handleClickCategory(category)}
+                    />
+                  );
+                })
+              }
+            </Dropdown>
+            :
+            props.categoryList.map((category) => {
+              return (
+                <button
+                  key={category}
+                  className={`header--nav-button ${currentCategory === category ? 'header--nav-button--active' : ''}`}
+                  onClick={handleClickCategory(category)}
+                >
+                  {category.toUpperCase()}
+                </button>
+              );
+            })
+          }
+        </nav>
+      }
     </header>
   );
 };
