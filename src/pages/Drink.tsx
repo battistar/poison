@@ -1,4 +1,3 @@
-import React from 'react';
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom';
 import { mapDrinkDetailsList } from '../utils/mapper';
 import * as httpClient from '../http/client';

@@ -9,7 +9,7 @@ interface DetailsCardProps {
 const DetailsCard = (props: DetailsCardProps): JSX.Element => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     navigate(-1);
   };
 
@@ -28,7 +28,7 @@ const DetailsCard = (props: DetailsCardProps): JSX.Element => {
           <ul className="details--ingredients">
             {props.drink.ingredients.map(({ name, measure }) => {
               return (
-                <li className="details--ingredient">
+                <li key={name} className="details--ingredient">
                   {name}
                   {measure && ` - ${measure}`}
                 </li>

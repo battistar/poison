@@ -30,7 +30,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => {
+const App = (): JSX.Element => {
   return <RouterProvider router={router} />;
 };
 

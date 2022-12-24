@@ -6,7 +6,7 @@ export const fromURLParams = (param: string): string => {
   const str = param.replaceAll('_', ' ').replaceAll('-', '/');
 
   const splittedStr = str.split(' ');
-  for (var i = 0; i < splittedStr.length; i++) {
+  for (let i = 0; i < splittedStr.length; i++) {
     splittedStr[i] = splittedStr[i].charAt(0).toUpperCase() + splittedStr[i].substring(1);
   }
 

@@ -17,13 +17,11 @@ const buildIngredients = (response: DrinkDetailsAPI): Ingredient[] => {
   const ingredients: Ingredient[] = [];
 
   let i = 1;
-  while (true) {
-    const name = response[`strIngredient${i}` as keyof DrinkDetailsAPI] as string;
-    const measure = response[`strMeasure${i}` as keyof DrinkDetailsAPI] as string | null;
-
-    if (name === null) {
-      break;
-    }
+  let name;
+  let measure;
+  while (name !== null) {
+    name = response[`strIngredient${i}` as keyof DrinkDetailsAPI] as string;
+    measure = response[`strMeasure${i}` as keyof DrinkDetailsAPI] as string | null;
 
     const ingredient: Ingredient = {
       name: name.trim(),

@@ -37,7 +37,7 @@ export const loader = async ({ params }: LoaderFunctionArgs): Promise<Drink[] | 
   }
 };
 
-const DrinkList = () => {
+const DrinkList = (): JSX.Element => {
   const navigate = useNavigate();
   const { category } = useParams();
   const drinkList = useLoaderData() as Drink[];

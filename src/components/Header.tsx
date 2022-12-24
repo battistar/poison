@@ -17,7 +17,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const navigate = useNavigate();
 
-  const handleClickDropdown = () => {
+  const handleClickDropdown = (): void => {
     setShowDropdown((prevShowDropdown: boolean): boolean => {
       return !prevShowDropdown;
     });
