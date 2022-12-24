@@ -1,5 +1,6 @@
 import React from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import * as httpClient from "../http/client"
 import Category from "../models/Category";
@@ -32,6 +33,7 @@ const Root = (): JSX.Element => {
           <Outlet />
         </div>
       </main>
+      <Footer />
     </>
   );
 };

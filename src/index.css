@@ -83,6 +83,34 @@ button.primary:hover {
   background-color: white;
 }
 
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  color: white;
+  background-color: #7e28cf;
+}
+
+.footer--copyright {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer--powered-by {
+  margin: 0;
+  font-size: 14px;
+  text-align: right;
+}
+
+.footer--link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer--link:hover {
+  text-decoration: underline;
+}
+
 .card {
   display: flex;
   flex-direction: column;
