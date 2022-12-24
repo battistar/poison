@@ -4,4 +4,4 @@ interface DrinkAPI {
   strDrinkThumb: string;
 }
 
-export default DrinkAPI
+export default DrinkAPI;

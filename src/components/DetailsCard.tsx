@@ -1,6 +1,6 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import DrinkDetails from "../models/DrinkDetails";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import DrinkDetails from '../models/DrinkDetails';
 
 interface DetailsCardProps {
   drink: DrinkDetails;
@@ -11,7 +11,7 @@ const DetailsCard = (props: DetailsCardProps): JSX.Element => {
 
   const handleClick = () => {
     navigate(-1);
-  }
+  };
 
   return (
     <div className="details">
@@ -26,23 +26,26 @@ const DetailsCard = (props: DetailsCardProps): JSX.Element => {
         <div className="details--section">
           <h5 className="details--section-title">Ingredients</h5>
           <ul className="details--ingredients">
-            {
-              props.drink.ingredients.map(({ name, measure }) => {
-                return (
-                  <li className="details--ingredient">{name}{measure && ` - ${measure}`}</li>
-                )
-              })
-            }
-          </ul>            
+            {props.drink.ingredients.map(({ name, measure }) => {
+              return (
+                <li className="details--ingredient">
+                  {name}
+                  {measure && ` - ${measure}`}
+                </li>
+              );
+            })}
+          </ul>
         </div>
-        { props.drink.instructions &&
+        {props.drink.instructions && (
           <div className="details--section">
             <h5 className="details--section-title">Istructions</h5>
             <p className="details--instructions">{props.drink.instructions}</p>
           </div>
-        }
+        )}
         <div className="details--button-container">
-          <button className="primary" onClick={handleClick}>Back</button>
+          <button className="primary" onClick={handleClick}>
+            Back
+          </button>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
-import React from "react";
-import Drink from "../models/Drink";
+import React from 'react';
+import Drink from '../models/Drink';
 
 interface CardProps {
-  drink: Drink
+  drink: Drink;
 }
 
 const Card = (props: CardProps): JSX.Element => {
@@ -12,6 +12,6 @@ const Card = (props: CardProps): JSX.Element => {
       <h4 className="card--title">{props.drink.name}</h4>
     </div>
   );
-}
+};
 
 export default Card;

@@ -1,4 +1,4 @@
-import DrinkAPI from "./Drink";
+import DrinkAPI from './Drink';
 
 interface DrinkListAPI {
   drinks: DrinkAPI[];

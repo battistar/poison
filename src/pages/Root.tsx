@@ -1,17 +1,17 @@
-import React from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import * as httpClient from "../http/client"
-import Category from "../models/Category";
-import { mapCategories } from "../utils/mapper";
+import React from 'react';
+import { Outlet, useLoaderData } from 'react-router-dom';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import * as httpClient from '../http/client';
+import Category from '../models/Category';
+import { mapCategories } from '../utils/mapper';
 
 export const loader = async (): Promise<Category[] | Response> => {
   const result = await httpClient.getCategories();
 
   if (result.status >= 200 && result.status < 300) {
     if (!result.data) {
-      throw new Response("Not Found", { status: 404 });
+      throw new Response('Not Found', { status: 404 });
     }
 
     const categoryList = mapCategories(result.data);

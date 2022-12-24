@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 interface DropdownItemProps {
-  title: string,
-  onClick: () => void
+  title: string;
+  onClick: () => void;
 }
 
 const DropdownItem = (props: DropdownItemProps): JSX.Element => {
@@ -11,6 +11,6 @@ const DropdownItem = (props: DropdownItemProps): JSX.Element => {
       {props.title}
     </button>
   );
-}
+};
 
 export default DropdownItem;

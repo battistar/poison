@@ -1,13 +1,13 @@
-import React from "react";
-import { isRouteErrorResponse, useNavigate, useRouteError } from "react-router-dom";
-import httpStatusCodeErrors from "../utils/httpStatusCodeErrors";
+import React from 'react';
+import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router-dom';
+import httpStatusCodes from '../utils/httpStatusCodes';
 
 const Error = (): JSX.Element => {
   const error = useRouteError() as Error;
   const navigate = useNavigate();
 
   const handleClick = (): void => {
-    navigate("/");
+    navigate('/');
   };
 
   let errorText;
@@ -17,10 +17,10 @@ const Error = (): JSX.Element => {
     } else if (error.data) {
       errorText = error.data as string;
     } else {
-      errorText = httpStatusCodeErrors[error.status as keyof typeof httpStatusCodeErrors];
+      errorText = httpStatusCodes[error.status as keyof typeof httpStatusCodes];
     }
   } else {
-    errorText = "Unknown error"
+    errorText = 'Unknown error';
   }
 
   return (
@@ -28,11 +28,11 @@ const Error = (): JSX.Element => {
       <h3 className="error--title">Oops!</h3>
       <p className="error--emoticons">¯\_(ツ)_/¯</p>
       <p className="error--description">
-        {
-          isRouteErrorResponse(error) ? `${error.status} - ${errorText.toUpperCase()}` : errorText.toUpperCase()
-        }
+        {isRouteErrorResponse(error) ? `${error.status} - ${errorText.toUpperCase()}` : errorText.toUpperCase()}
       </p>
-      <button className="primary" onClick={handleClick}>Home</button>
+      <button className="primary" onClick={handleClick}>
+        Home
+      </button>
     </div>
   );
 };

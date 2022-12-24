@@ -1,9 +1,9 @@
-import Category from "./Category";
-import Drink from "./Drink";
+import Category from './Category';
+import Drink from './Drink';
 
 interface DrinkPage {
   categoryList: Category[];
-  drinkList: Drink[]
+  drinkList: Drink[];
 }
 
 export default DrinkPage;

@@ -12,9 +12,14 @@ const Footer = (): JSX.Element => {
   return (
     <footer>
       <p className="footer--copyright">© {date} Samuele Battistella</p>
-      <p className="footer--powered-by">Powered by <a className="footer--link" href="https://www.thecocktaildb.com">www.thecocktaildb.com</a> </p>
+      <p className="footer--powered-by">
+        Powered by{' '}
+        <a className="footer--link" href="https://www.thecocktaildb.com">
+          www.thecocktaildb.com
+        </a>{' '}
+      </p>
     </footer>
   );
-}
+};
 
 export default Footer;

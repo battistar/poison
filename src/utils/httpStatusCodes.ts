@@ -1,4 +1,4 @@
-const errors = {
+const codes = {
   200: 'OK',
   201: 'Created',
   202: 'Accepted',
@@ -32,7 +32,7 @@ const errors = {
   415: 'Unsupported Media Type',
   416: 'Requested Range Not Satisfiable',
   417: 'Expectation Failed',
-  418: 'I\'m a teapot',
+  418: "I'm a teapot",
   429: 'Too Many Requests',
   500: 'Internal Server Error',
   501: 'Not Implemented',
@@ -42,4 +42,4 @@ const errors = {
   505: 'HTTP Version Not Supported',
 };
 
-export default errors;
+export default codes;

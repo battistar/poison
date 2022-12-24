@@ -1,11 +1,11 @@
-import Category from "../models/Category";
-import Drink from "../models/Drink";
-import DrinkDetails from "../models/DrinkDetails";
-import CategoryListAPI from "../models/http/CategoryList";
-import DrinkDetailsAPI from "../models/http/DrinkDetails";
-import DrinkDetailsListAPI from "../models/http/DrinkDetailsList";
-import DrinkListAPI from "../models/http/DrinkList";
-import Ingredient from "../models/Ingredient";
+import Category from '../models/Category';
+import Drink from '../models/Drink';
+import DrinkDetails from '../models/DrinkDetails';
+import CategoryListAPI from '../models/http/CategoryList';
+import DrinkDetailsAPI from '../models/http/DrinkDetails';
+import DrinkDetailsListAPI from '../models/http/DrinkDetailsList';
+import DrinkListAPI from '../models/http/DrinkList';
+import Ingredient from '../models/Ingredient';
 
 export const mapCategories = (response: CategoryListAPI): Category[] => {
   return response.drinks.map(({ strCategory }) => {
