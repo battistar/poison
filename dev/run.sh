@@ -12,7 +12,7 @@ else
     echo ""
     echo "Usage:  run.sh [start | stop ]"
     echo ""
-    echo "  - start: start server and other services (e.g. database)"
+    echo "  - start: start react dev server"
     echo "  - stop: teardown all"
     exit 1
 fi
