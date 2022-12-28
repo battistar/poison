@@ -16,12 +16,13 @@ export const mapCategories = (response: CategoryListAPI): Category[] => {
 const buildIngredients = (response: DrinkDetailsAPI): Ingredient[] => {
   const ingredients: Ingredient[] = [];
 
-  let i = 1;
-  let name;
-  let measure;
-  while (name !== null) {
-    name = response[`strIngredient${i}` as keyof DrinkDetailsAPI] as string;
-    measure = response[`strMeasure${i}` as keyof DrinkDetailsAPI] as string | null;
+  for (let i = 1; ; i++) {
+    const name = response[`strIngredient${i}` as keyof DrinkDetailsAPI] as string;
+    const measure = response[`strMeasure${i}` as keyof DrinkDetailsAPI] as string | null;
+
+    if (name === null) {
+      break;
+    }
 
     const ingredient: Ingredient = {
       name: name.trim(),
@@ -29,8 +30,6 @@ const buildIngredients = (response: DrinkDetailsAPI): Ingredient[] => {
     };
 
     ingredients.push(ingredient);
-
-    i++;
   }
 
   return ingredients;
