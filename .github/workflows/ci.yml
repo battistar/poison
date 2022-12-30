@@ -20,16 +20,16 @@ jobs:
         cache: 'npm'
         
     - name: Install deps
-    - run: npm ci
+      run: npm ci
     
     - name: Prettier check
-    - run: npx prettier --check "src/**/*/*.{ts,tsx}"
+      run: npx prettier --check "src/**/*/*.{ts,tsx}"
     
     - name: Linter check
-    - run: npx eslint "src/**/*/*.{ts,tsx}"
+      run: npx eslint "src/**/*/*.{ts,tsx}"
     
     - name: Build
-    - run: npm run build
+      run: npm run build
     
     - name: Deploy
-    - run: npm run deploy
+      run: npm run deploy
