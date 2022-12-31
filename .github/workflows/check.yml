@@ -2,9 +2,13 @@ name: Check
 
 on:
   push:
-    branches: [ "**", "!master" ]
+    branches: 
+      - '**'
+    branches-ignore:
+      - master
   pull_request:
-    branches: [ "**" ]
+    branches:
+      - '**'
 
 jobs:
   ci:
