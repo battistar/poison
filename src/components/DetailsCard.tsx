@@ -43,7 +43,7 @@ const DetailsCard = (props: DetailsCardProps): JSX.Element => {
           </div>
         )}
         <div className="details--button-container">
-          <button className="primary" onClick={handleClick}>
+          <button className="details--button" onClick={handleClick}>
             Back
           </button>
         </div>

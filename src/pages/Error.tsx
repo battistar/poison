@@ -30,7 +30,7 @@ const Error = (): JSX.Element => {
       <p className="error--description">
         {isRouteErrorResponse(error) ? `${error.status} - ${errorText.toUpperCase()}` : errorText.toUpperCase()}
       </p>
-      <button className="primary" onClick={handleClick}>
+      <button className="error--button" onClick={handleClick}>
         Home
       </button>
     </div>

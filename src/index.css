@@ -1,3 +1,7 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
@@ -41,43 +45,35 @@ header {
   color: white;
   background-color: transparent;
   border: none;
-  font-size: 14px;
+  font-size: 12px;
   padding: 8px 8px;
   transition: 0.4s;
   cursor: pointer;
 }
 
-.header--nav-dropdown {
-  color: white;
-  width: 100%;
-  background-color: transparent;
-  border: none;
-  font-size: 14px;
-  padding: 8px 8px;
-}
-
-.header--nav-button:hover {
+.header--nav-button:active {
   color: #202020;
   background-color: white;
+}
+
+@media (hover: hover) {
+  .header--nav-button {
+    transition: 0.4s;
+  }
+
+  .header--nav-button:hover {
+    color: #202020;
+    background-color: white;
+  }
+}
+
+@media only screen and (min-width: 922px) {
+  .header--nav-button {
+    font-size: 14px;
+  }
 }
 
 .header--nav-button--active {
-  color: #202020;
-  background-color: white;
-}
-
-button.primary {
-  color: white;
-  background-color: #7e28cf;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  padding: 8px;
-  transition: 0.4s;
-  cursor: pointer;
-}
-
-button.primary:hover {
   color: #202020;
   background-color: white;
 }
@@ -123,16 +119,18 @@ footer {
   transition: 0.4s;
 }
 
-.card:hover {
-  background-color: #7e28cf;
-  transform: scale(1.05);
-  box-shadow: 16px 16px 16px black;
-  cursor: pointer;
+@media (hover: hover) {
+  .card:hover {
+    background-color: #7e28cf;
+    transform: scale(1.05);
+    box-shadow: 16px 16px 16px black;
+    cursor: pointer;
+  }
 }
 
 .card--image {
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   border-radius: 16px;
 }
@@ -160,9 +158,27 @@ footer {
 
 .details--image {
   width: 100%;
-  height: 400px;
+  height: 250px;
   object-fit: cover;
   border-radius: 16px;
+}
+
+@media only screen and (min-width: 768px) {
+  .details {
+    flex-direction: row;
+  }
+
+  .details--image-container {
+    width: 35%;
+  }
+
+  .details--image {
+    height: 400px;
+  }
+
+  .details--text-container {
+    width: 65%;
+  }
 }
 
 .details--text-container {
@@ -210,6 +226,33 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+}
+
+.details--button, .error--button {
+  color: white;
+  background-color: #7e28cf;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 8px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.details--button:active, .error--button:active {
+  color: #202020;
+  background-color: white;
+}
+
+@media (hover: hover) {
+  .details--button, .error--button {
+    transition: 0.4s;
+  }
+
+  .details--button:hover, .error--button:hover {
+    color: #202020;
+    background-color: white;
+  }
 }
 
 .details--instructions {
@@ -278,13 +321,23 @@ footer {
   border: none;
   font-size: 14px;
   padding: 8px 0px;
-  transition: 0.4s;
   cursor: pointer;
 }
 
-.dropdown-item:hover {
+.dropdown-item:active {
   color: #202020;
   background-color: white;
+}
+
+@media (hover: hover) {
+  .dropdown-item {
+    transition: 0.4s;
+  }
+
+  .dropdown-item:hover {
+    color: #202020;
+    background-color: white;
+  }
 }
 
 .error {
@@ -403,22 +456,6 @@ footer {
   .row > .col-m-12 {
     width: 100%;
   }
-
-  .header--nav-button {
-    font-size: 12px;
-  }
-
-  .details {
-    flex-direction: row;
-  }
-
-  .details--image-container {
-    width: 35%;
-  }
-
-  .details--text-container {
-    width: 65%;
-  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -461,9 +498,5 @@ footer {
   }
   .row > .col-l-12 {
     width: 100%;
-  }
-
-  .header--nav-button {
-    font-size: 14px;
   }
 }
