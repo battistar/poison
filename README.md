@@ -10,7 +10,7 @@ You can setup and run the application in your local environment in different way
 
 ### Docker
 
-Move in dev folder and make executable `run.sh` for the user.
+Move in dev folder and make executable `run.sh`:
 
 ```shell
 sudo chmod +x run.sh
