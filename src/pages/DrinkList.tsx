@@ -1,3 +1,5 @@
+import Column from 'components/Column';
+import Row from 'components/Row';
 import { redirect, LoaderFunctionArgs, useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import * as httpClient from '../http/client';
@@ -49,16 +51,16 @@ const DrinkList = (): JSX.Element => {
   };
 
   return (
-    <div className="row">
+    <Row>
       {drinkList.length > 0 &&
         drinkList.map((drink) => {
           return (
-            <div key={drink.id} className="col-l-3 col-m-4 col-s-6" onClick={handleClick(drink.id)}>
-              <Card drink={drink} />
-            </div>
+            <Column key={drink.id} s={6} m={4} l={3}>
+              <Card drink={drink} onClick={handleClick(drink.id)} />
+            </Column>
           );
         })}
-    </div>
+    </Row>
   );
 };
 

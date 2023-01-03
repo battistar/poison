@@ -1,4 +1,4 @@
-import React from 'react';
+import Container from 'components/Container';
 import { Outlet, useLoaderData } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -29,9 +29,9 @@ const Root = (): JSX.Element => {
     <>
       <Header categoryList={categoryList} />
       <main>
-        <div className="container">
+        <Container>
           <Outlet />
-        </div>
+        </Container>
       </main>
       <Footer />
     </>
