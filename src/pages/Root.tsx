@@ -26,7 +26,7 @@ const Root = (): JSX.Element => {
   const categoryList = useLoaderData() as Category[] | undefined;
 
   return (
-    <>
+    <div className="root">
       <Header categoryList={categoryList} />
       <main>
         <Container>
@@ -34,7 +34,7 @@ const Root = (): JSX.Element => {
         </Container>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
