@@ -1,10 +1,11 @@
 import Container from 'components/Container';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData, useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import * as httpClient from '../http/client';
 import Category from '../models/Category';
 import { mapCategories } from '../utils/mapper';
+import { useEffect } from 'react';
 
 export const loader = async (): Promise<Category[] | Response> => {
   const result = await httpClient.getCategories();
@@ -24,6 +25,11 @@ export const loader = async (): Promise<Category[] | Response> => {
 
 const Root = (): JSX.Element => {
   const categoryList = useLoaderData() as Category[] | undefined;
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="root">
